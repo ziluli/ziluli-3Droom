@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>哆啦A梦</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+    body{
+        background:linear-gradient(to top right,#D1D1D1,#fff);
+    }
+    .box{
+        width:500px;height:500px;
+        position:fixed;top:0;bottom:0;left:0;right:0;margin:auto;
+        /*border:1px solid #55a532;*/
+    }
+    .head{
+        width:320px;height:300px;border:2px solid #000;
+        border-radius: 100%;
+        position:absolute;top:0;left:0;right:0;margin:0 auto;
+        background:linear-gradient(to right top,#085367,#0CB2DC,#77DBF3 90%);
+        box-shadow: -10px 10px 10px #999;
+    }
+    .face{
+        width:250px;height:200px;border:2px solid #000;
+        border-radius:50%;
+        position:absolute;
+        left:0;right:0;bottom:0;margin:0 auto;
+        top:80px;
+        background:#fff;
+        background:linear-gradient(to right top,#B9B9B9,#FFFFFF 30%);
+    }
+    .eyes{
+        width:75px;height:90px;border:2px solid #000;
+        border-radius:45%;
+        position:absolute;
+        background: #fff;
+    }
+    .eyes div{
+        width:15px;height:15px;
+        background: #000;
+        border-radius: 100%;
+        position:absolute;
+    }
+    .eLeft{
+        top:-50px;left:50px;
+    }
+    .eLeft div{
+        top:50px;right:15px;
+    }
+    .eRight{
+        top:-50px;left:123px;
+    }
+    .eRight div{
+        animation: one 3s;
+        top:50px;left:15px;
+    }
+    .nose{
+        width:40px;height:40px;border:2px solid #000;
+        border-radius:100%;
+        background: radial-gradient(circle 40px at 25px 15px, #fff ,#C93E00 25%);
+        position:absolute;top:23px;left:0;right:0;margin:0 auto;
+        z-index: 20;
+    }
+    .nose2{
+        width:1px;height:85px;background: #000;
+        position:absolute;top:-5px;bottom:0;left:0;right:0;margin:auto;
+    }
+    .mouth{
+        width:100px;height:50px;border-bottom:2px solid #000;
+        border-radius: 100%;
+        position:absolute;bottom:0;left:0;right:0;margin:0 auto;
+        top:90px;
+    }
+    /*身体*/
+    .body{
+        width:220px;height:200px;
+        position:absolute;bottom:40px;left:0;right:0;margin:0 auto;
+        background: #008EB5;
+        z-index: 10;
+        background:linear-gradient(to top right,#0A7793,#07BEEA);
+    }
+    .body .border{
+        width:100%;height:128px;border:2px solid #000 ;
+        border-top:0;
+        position:absolute;bottom:0;left:0;right:0;margin:0 auto;
+    }
+    .wb{
+        width:260px;height:24px;border:2px solid #000;
+        border-radius: 15px;
+        position:absolute;top:-5px;left:-16px;
+        background:linear-gradient(to bottom,#C83F00,#850800);
+        z-index: 50;
+        box-shadow: -3px 0 5px #999;
+    }
+    .wb .ld{
+        width:40px;height:40px;border:2px solid #000;
+        border-radius:50%;
+        position:absolute;left:0;right:0;margin:0 auto;
+        top:10px;
+        background:radial-gradient(circle 40px at 25px 10px,#FBF8B3,#BEB608 60%);
+        box-shadow: -3px 3px 3px #999;
+
+    }
+    .wb .ld div:nth-child(1){
+        width:100%;height:5px;border:2px solid #000;
+        position:absolute;left:0;right:0;margin:0 auto;
+        top:10px;
+    }
+    .wb .ld div:nth-child(2){
+        width:10px;height:10px;
+        border-radius: 50%;
+        position:absolute;left:0;right:0;margin:0 auto;
+        top:17px;
+        background: #000;
+    }
+    .wb .ld div:nth-child(3){
+        width:2px;height:14px;
+        position:absolute;left:0;right:0;margin:0 auto;
+        top:25px;
+        background: #000;
+    }
+    .geboL{
+        width:100px;height:50px;border:2px solid #000;
+        background: #0995B7;
+        position:absolute;left:55px;top:260px;
+        transform-origin: right;
+        transform:rotateZ(-45deg);
+        box-shadow: 0 10px 10px #999;
+    }
+    .geboL div{
+        width:60px;height:60px;border:2px solid #000;
+        border-radius: 100%;
+        background: linear-gradient(to right,#ccc,#fff,#fff,#ccc);
+        position:absolute;top:-5px;left:-30px;
+    }
+    .geboR{
+        width:100px;height:50px;border:2px solid #000;
+        background: #07B7E1;
+        position:absolute;left:345px;top:260px;
+        transform-origin: left;
+        transform:rotateZ(45deg);
+        box-shadow: 0 10px 10px #999;
+    }
+    .geboR div{
+        width:60px;height:60px;border:2px solid #000;
+        border-radius: 100%;
+        position:absolute;top:-5px;right:-30px;
+        background: linear-gradient(to right,#ccc,#fff,#fff,#ccc);
+    }
+    .footL{
+        width:120px;height:30px;border:2px solid #000;
+        background:#fff;border-radius:20px 15px 15px 10px;
+        position:absolute;bottom:13px;left:120px;
+        background:linear-gradient(to right,#D1D1D1,#fff 50%);
+        box-shadow: -7px 0 10px #999;
+    }
+    .footR{
+        width:120px;height:30px;border:2px solid #000;
+        background:#fff;border-radius:15px 20px 10px 15px ;
+        position:absolute;bottom:13px;left:260px;
+        background:linear-gradient(to left,#D1D1D1,#fff 50%);
+        box-shadow: 7px 0 10px #999;
+    }
+    .body .kd{
+        width:180px;height:160px;border:2px solid #000;background:#fff;
+        border-radius: 100%;
+        position:absolute;left:0;right:0;margin:0 auto;
+        z-index: 0;top:-5px;
+        background:linear-gradient(to top right,#D1D1D1,#fff 50%);
+    }
+    .kd div{
+        width:80%;height:40%;
+        border:2px solid #000;background:#fff;
+        position:absolute;left:0;right:0;margin:0 auto;
+        top:80px;
+        border-radius:0 0 200px 200px;
+        background:linear-gradient(to top right,#D1D1D1,#fff 50%);
+    }
+    .dang{
+        width:40px;height:20px;
+        border-radius:200px 200px 0 0;
+        border:2px solid #000;background:#fff;
+        position:absolute;left:0;right:0;margin:0 auto;
+        bottom:0;border-bottom: 0;
+        background:linear-gradient(to top,#fff,#D1D1D1);
+    }
+</style>
+<script>
+    window.onload = function(){
+        var face = document.querySelector(".face");
+        for(var i=0;i<6;i++){
+            var huxu = document.createElement("div");
+            if(i<3){
+                huxu.style.cssText="width:60px;height:2px;background:#000;position:absolute;transform-origin:right;top:"+(100+i*-10)+"px;left:30px";
+                console.log(i);
+                huxu.style.transform="rotateZ("+(i-1)*15+"deg)";
+            }else{
+                huxu.style.cssText="width:60px;height:2px;background:#000;position:absolute;transform-origin:left;top:"+(i*10+50)+"px;left:150px";
+                huxu.style.transform="rotateZ("+((i-4)*15)+"deg)";
+            }
+            face.appendChild(huxu);
+        }
+
+        //eye动画
+        var eyeL = document.querySelector(".eLeft div");
+        var eyeR = document.querySelector(".eRight div");
+
+        var t = setInterval(function(){
+
+        },3)
+
+    }
+</script>
+<body>
+<div class="box">
+    <div class="head">
+        <div class="face">
+            <div class="eyes eLeft">
+                <div></div>
+            </div>
+            <div class="eyes eRight">
+                <div></div>
+            </div>
+            <div class="nose"></div>
+            <div class="nose2"></div>
+            <div class="mouth"></div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="wb">
+            <div class="ld">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="border"></div>
+        <div class="kd">
+            <div></div>
+        </div>
+        <div class="dang"></div>
+    </div>
+    <div class="geboL">
+        <div></div>
+    </div>
+    <div class="geboR">
+        <div></div>
+    </div>
+    <div class="footL"></div>
+    <div class="footR"></div>
+</div>
+</body>
+</html>
